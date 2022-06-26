@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Search from "../component/Search";
 import { useStateValue } from "../component/StateProvider";
 import useGoogleSearch from "../hooks/useGoogleSearch";
@@ -11,12 +11,16 @@ import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const SearchPage = () => {
-  // const Navigate = useNavigate();
+  const Navigate = useNavigate();
   const [{ term }] = useStateValue();
   const { data } = useGoogleSearch(term);
   // custome search enigne api
   console.log(data);
-
+  useEffect(() => {
+    if (!term) {
+      Navigate("/", { replace: true });
+    }
+  }, [term]);
   return (
     <>
       <div className="flex px-2 justify-start sticky top-0 bg-white z-50 pt-[20px] pb-[10px]">
