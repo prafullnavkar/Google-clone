@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import SearchPage from "./pages/SearchPage";
 function App() {
   return (
-    <div className="App">
+    <div className="relative">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

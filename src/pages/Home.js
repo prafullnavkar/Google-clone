@@ -6,7 +6,7 @@ import Search from "../component/Search";
 
 const Home = () => {
   return (
-    <div className="flex flex-col justify-center min-h-screen">
+    <div className="">
       <div className="flex justify-between py-2 px-1 text-sm font-medium text-slate-600">
         <div className="flex items-center ">
           <Link to="/about" className="m-2 hover:underline">
@@ -27,7 +27,7 @@ const Home = () => {
           <Avatar className="mx-2 my-1" sx={{ width: 30, height: 30 }} />
         </div>
       </div>
-      <div className=" flex-1 flex justify-center items-center">
+      <div className="flex justify-center pt-[50px]">
         <div className="flex flex-col justify-center items-center">
           <img
             src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
@@ -35,11 +35,10 @@ const Home = () => {
             className="h-[100px] md:h-[120px] object-contain"
           />
           <div className="mt-4">
-            <Search hideButtons/>
+            <Search hideButtons={false} />
           </div>
         </div>
       </div>
-     
     </div>
   );
 };

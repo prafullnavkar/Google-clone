@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import API_KEYS from "../Keys";
 
 const CONTEXT_KEYS = "29d3e8e12138bc44e";
@@ -15,7 +15,9 @@ const useGoogleSearch = (term) => {
           setData(result);
         });
     };
-    fetchData();
+    if (term) {
+      fetchData();
+    }
   }, [term]);
   return { data };
 };
