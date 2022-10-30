@@ -11,14 +11,14 @@ import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const SearchPage = () => {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const [{ term }] = useStateValue();
   const { data } = useGoogleSearch(term);
   // custome search enigne api
   // console.log(data);
   useEffect(() => {
     if (!term) {
-      Navigate("/", { replace: true });
+      navigate("/", { replace: true });
     }
   }, [term]);
   return (
