@@ -20,6 +20,7 @@ const SearchPage = () => {
     if (!term) {
       navigate("/", { replace: true });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [term]);
   return (
     <>
