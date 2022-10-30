@@ -15,7 +15,7 @@ const SearchPage = () => {
   const [{ term }] = useStateValue();
   const { data } = useGoogleSearch(term);
   // custome search enigne api
-  console.log(data);
+  // console.log(data);
   useEffect(() => {
     if (!term) {
       Navigate("/", { replace: true });
@@ -65,7 +65,7 @@ const SearchPage = () => {
       <hr className="bg-gray-300 w-full flex" />
       {term && (
         <>
-          {data?.length > 0 ? (
+          {data?.items.length > 0 ? (
             <div className="my-2 mx-4 ">
               <p className="mb-4 text-xs font-medium text-gray-600">
                 About {data?.searchInformation?.formattedTotalResults} results (
