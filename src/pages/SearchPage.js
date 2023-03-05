@@ -4,11 +4,11 @@ import Search from "../component/Search";
 import { useStateValue } from "../component/StateProvider";
 import useGoogleSearch from "../hooks/useGoogleSearch";
 import SearchIcon from "@mui/icons-material/Search";
-import BookIcon from "@mui/icons-material/Book";
-import NewspaperIcon from "@mui/icons-material/Newspaper";
-import ImageIcon from "@mui/icons-material/Image";
-import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+// import BookIcon from "@mui/icons-material/Book";
+// import NewspaperIcon from "@mui/icons-material/Newspaper";
+// import ImageIcon from "@mui/icons-material/Image";
+// import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
+// import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SearchGif from "../assets/Search.gif";
 
 const SearchPage = () => {
@@ -51,7 +51,7 @@ const SearchPage = () => {
               <SearchIcon />
               All
             </Link>
-            <Link to="/" className="p-1">
+            {/* <Link to="/" className="p-1">
               <BookIcon />
               Books
             </Link>{" "}
@@ -69,7 +69,7 @@ const SearchPage = () => {
             </Link>
             <div className="p-1">
               <MoreVertIcon />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
