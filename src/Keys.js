@@ -1,3 +1,3 @@
-export const API_KEYS= "AIzaSyBMe-LeeMq4PMVTdXTj9XuOYVGfoC0LeOU"
+export const API_KEYS= process.env.REACT_APP_G_KEY
 
 export default API_KEYS
