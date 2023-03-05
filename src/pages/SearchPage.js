@@ -9,11 +9,12 @@ import NewspaperIcon from "@mui/icons-material/Newspaper";
 import ImageIcon from "@mui/icons-material/Image";
 import OndemandVideoIcon from "@mui/icons-material/OndemandVideo";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import SearchGif from "../assets/Search.gif";
 
 const SearchPage = () => {
   const navigate = useNavigate();
   const [{ term }] = useStateValue();
-  const { data } = useGoogleSearch(term);
+  const { data, loader } = useGoogleSearch(term);
   // custome search enigne api
   // console.log(data);
   useEffect(() => {
@@ -25,7 +26,7 @@ const SearchPage = () => {
   return (
     <>
       <div className="flex px-2 justify-start sticky top-0 bg-white z-50 pt-[20px] pb-[10px]">
-        <div className="mr-[20px] flex-none mt-[8px]">
+        <div className="mr-[20px] hidden md:block flex-none mt-[8px]">
           <Link to="/">
             <img
               src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
@@ -35,8 +36,17 @@ const SearchPage = () => {
           </Link>
         </div>
         <div className="flex flex-col">
+          <div className="py-2 block md:hidden">
+            <Link to="/">
+              <img
+                src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+                alt=""
+                className="h-[40px] object-contain mx-auto"
+              />
+            </Link>
+          </div>
           <Search hideButtons />
-          <div className="flex space-x-2 mt-1 ml-1 text-xs font-medium text-gray-500 ">
+          <div className="flex space-x-2 mt-1 ml-1 text-[10px] md:text-xs font-medium text-gray-500">
             <Link to="/" className="p-1">
               <SearchIcon />
               All
@@ -66,32 +76,44 @@ const SearchPage = () => {
       <hr className="bg-gray-300 w-full flex" />
       {term && (
         <>
-          {data?.items.length > 0 ? (
-            <div className="my-2 mx-4 ">
-              <p className="mb-4 text-xs font-medium text-gray-600">
-                About {data?.searchInformation?.formattedTotalResults} results (
-                {data?.searchInformation?.formattedSearchTime} seconds) for{" "}
-                {term}
-              </p>
-              {data?.items?.map((item) => (
-                <div className="my-4 flex flex-col">
-                  <a
-                    className="text-xs hover:underline text-blue-800"
-                    href={item?.link}
-                  >
-                    <p className="hover:no-underline no-underline text-gray-800">
-                      {item?.displayLink}
-                    </p>
-                    <p className="text-xl  ">{item?.title}</p>
-                  </a>
-                  <p className="text-sm">{item?.snippet}</p>
-                </div>
-              ))}
+          {loader ? (
+            <div className="text-xl flex justify-center items-center text-center font-medium text-gray-700 m-4">
+              <img
+                src={SearchGif}
+                alt="searching..."
+                className="w-20 h-20 mx-auto"
+              />
             </div>
           ) : (
-            <div className="text-xl font-medium text-gray-700 m-4">
-              Something went Wrong
-            </div>
+            <>
+              {data?.items.length > 0 ? (
+                <div className="my-2 mx-2 md:mx-4">
+                  <p className="mb-4 text-xs font-medium text-gray-600">
+                    About {data?.searchInformation?.formattedTotalResults}{" "}
+                    results ({data?.searchInformation?.formattedSearchTime}{" "}
+                    seconds) for {term}
+                  </p>
+                  {data?.items?.map((item, index) => (
+                    <div key={index} className="my-4 flex flex-col">
+                      <a
+                        className="text-xs hover:underline text-blue-800"
+                        href={item?.link}
+                      >
+                        <p className="hover:no-underline no-underline text-gray-800">
+                          {item?.displayLink}
+                        </p>
+                        <p className="text-base md:text-xl">{item?.title}</p>
+                      </a>
+                      <p className="text-sm">{item?.snippet}</p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-xl font-medium text-gray-700 m-4">
+                  Something went Wrong
+                </div>
+              )}
+            </>
           )}
         </>
       )}

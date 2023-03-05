@@ -21,7 +21,7 @@ const Search = ({ hideButtons=false }) => {
   };
   return (
     <form onSubmit={search}>
-      <div className="w-[400px] md:w-[500px] hover:shadow-[0_2px_5px_1px_rgba(0,0,0,0.2)] border-2 border-gray-300 rounded-full p-[10px] flex">
+      <div className="w-[380px] md:w-[500px] hover:shadow-[0_2px_5px_1px_rgba(0,0,0,0.2)] border-2 border-gray-300 rounded-full p-[5px] md:p-[10px] flex">
         <SearchIcon className="mx-auto text-[#9aa0a6]" />
         <div className="flex-1 ">
           <input
